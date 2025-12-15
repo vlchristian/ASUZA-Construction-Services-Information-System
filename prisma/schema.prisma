@@ -12,3 +12,34 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+
+enum Role {
+  ADMIN
+  TEAM_LEADER
+  OFFICE_STAFF
+  WORKER
+  UNASSIGNED
+}
+
+enum UserStatus {
+  PENDING_APPROVAL
+  ACTIVE
+  INACTIVE
+  REJECTED
+}
+
+
+model User {
+  userID     String     @id @default(uuid())
+  email      String  @unique
+  username   String  @unique
+  password   String
+  fullName   String
+
+  role       Role    @default(UNASSIGNED)
+  status     UserStatus @default(PENDING_APPROVAL)
+
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
