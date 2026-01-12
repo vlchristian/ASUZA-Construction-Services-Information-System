@@ -11,14 +11,14 @@ import Image from "next/image";
 
 export default function RegisterPage() {
     const router = useRouter();
-    const [serverError, setServerError] = useState(null);
+    const [serverError, setServerError] = useState("");
 
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
         resolver: zodResolver(registerSchema),
     });
 
     const onSubmit = async (data) => {
-        setServerError(null);
+        setServerError("");
         try{
             const response = await fetch("/api/register", {
                 method: "POST",
