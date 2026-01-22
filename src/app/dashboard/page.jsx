@@ -2,22 +2,23 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 // import prisma from "@/lib/prisma";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import { Role } from "@/generated/prisma/enums";
 
 export default async function DashboardRedirect(){
     const session = await getServerSession(authOptions);
     if(!session){
-        redirect("/login");
+        redirect("/auth/login");
     }
     switch(session.user.role){
-        case "ADMIN":
-            redirect("/dashboard/admin");
-        case "OFFICE_STAFF":
-            redirect("/dashboard/office-staff");
-        case "TEAM_LEADER":
-            redirect("/dashboard/team-leader");
-        case "WORKER":
-            redirect("/dashboard/worker");
+        case Role.ADMIN:
+            return redirect("/dashboard/admin");
+        case Role.OFFICE_STAFF:
+            return redirect("/dashboard/office-staff");
+        case Role.TEAM_LEADER:
+            return redirect("/dashboard/team-leader");
+        case Role.WORKER:
+            return redirect("/dashboard/worker");
         default:
-            redirect("/login");
+            return redirect("/auth/login");
     }
 }

@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/prisma";
+import { signIn } from "next-auth/react";
 
 export const authOptions = {
   session: {
@@ -52,16 +53,14 @@ export const authOptions = {
       return token;
     },
     async session({session, token}){
-      if(session?.user){
         session.user.role = token.role;
         session.user.id = token.id;
         session.user.username = token.username;
-      }
       return session;
     }
   },
   pages: {
-    signIn: "/login",
+    signIn: "/login"
   }
 };
 const handler = NextAuth(authOptions);

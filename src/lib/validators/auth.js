@@ -7,8 +7,7 @@ export const registerSchema = z
     password: z.string().min(8, "Password must be 8 characters and above"),
     confirmPassword: z.string(),
     fullName: z.string().min(2, "Please enter your name")
-  })
-  .refine((data) => data.password === data.confirmPassword, {
+  }).refine((data) => data.password !== data.confirmPassword, {
     message: "Password dont match",
     path: ["confirmPassword"],
   });

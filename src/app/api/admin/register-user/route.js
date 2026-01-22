@@ -40,14 +40,13 @@ export async function POST(request) {
       },
     });
 
-    const { password: newPassword, ...rest } = newUser;
+    const { password: newPassword, ...userData } = newUser;
 
     return NextResponse.json(
-      { user: rest, message: "User created successfully" },
+      { user: userData, message: "User created successfully" },
       { status: 201 }
     );
   } catch (error) {
-    console.log("Registration Error:", error);
     return NextResponse.json({ message: "Error" }, { status: 500 });
   }
 }
