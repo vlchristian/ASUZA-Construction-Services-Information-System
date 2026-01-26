@@ -30,7 +30,7 @@ export default function UserManagement({ users }) {
             <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Email</th>
             <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
             <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Role</th>
-            <th className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Actions</th>
+            <th className="px-6 py-3 text-right text-xs font-bold text-gray-500 uppercase tracking-wider">Approve/Reject</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">

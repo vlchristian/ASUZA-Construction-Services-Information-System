@@ -142,7 +142,7 @@ export default function ProjectManager({ initialProjects, availableStaff }) {
                     <th className="p-3 border-b">Location</th>
                     <th className="p-3 border-b">Status</th>
                     <th className="p-3 border-b">Team</th>
-                    <th className="p-3 border-b text-center">Actions</th>
+                    <th className="p-3 border-b text-center">Edit/Delete</th>
                 </tr>
             </thead>
             <tbody className="text-gray-600 text-sm">

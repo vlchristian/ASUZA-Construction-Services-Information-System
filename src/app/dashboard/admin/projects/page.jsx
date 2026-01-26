@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import ProjectManager from "@/components/dashboard/ProjectManager";
-
+import { Role } from "@/generated/prisma/enums";
+import { checkRole } from "@/lib/auth/checkRole";
 
 export default async function AdminProjectsPage() {
     await checkRole(Role.ADMIN);
